@@ -44,6 +44,7 @@ const responseObject = {
 function App() {
   const apiKey = process.env.REACT_APP_WEATHER_STACK_API;
   const mapApiKey = process.env.REACT_APP_MAPQUEST_API;
+  const openWeatherAPI = process.env.REACT_APP_OPEN_WEATHER_API;
 
   const [weather, setWeather] = useState({});
   const [mapUrl, setMapUrl] = useState('');
@@ -73,14 +74,57 @@ function App() {
     // const response = await fetch(
     //   `http://api.weatherstack.com/current?access_key=abb76f98293860a41b391cd7208a22b5&query=New%20York`
     // );
-    const response = await fetch(
-      `http://api.weatherstack.com/current?access_key=${apiKey}&query=${encodeURIComponent(
-        lat
-      )},${encodeURIComponent(lng)}`
-    );
-    const weather = await response.json();
+    console.log({ lat, lng });
+    const url = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lng}&exclude=minutely&appid=${openWeatherAPI}&units=metric`;
 
-    return weather;
+    try {
+      const response = await fetch(url);
+      const { current, daily, hourly } = await response.json();
+
+      const weather = {
+        current,
+        daily: daily.map((day) => ({
+          temp: day.temp,
+          feelsLike: day.feels_like,
+          weather: day.weather[0],
+          moonPhase: day.moon_phase,
+          sunrise: day.sunrise,
+          sunset: day.sunset,
+          humidity: day.humidity,
+          clouds: day.clouds,
+          wind: day.wind_speed,
+          uvi: day.uvi,
+          pressure: day.pressure,
+        })),
+        hourly: hourly.map((hour) => {
+          const {
+            dt,
+            temp,
+            feels_like,
+            wind_deg,
+            wind_speed,
+            weather,
+            uvi,
+            pop,
+          } = hour;
+
+          return {
+            dt,
+            temp,
+            feels_like,
+            wind_deg,
+            wind_speed,
+            weather: weather[0],
+            uvi,
+            pop,
+          };
+        }),
+      };
+
+      return weather;
+    } catch (err) {
+      console.log(err);
+    }
   };
 
   // console.log(responseObject);
@@ -115,7 +159,7 @@ function App() {
         </form>
       </header>
       <main>
-        <p>{weather?.current?.weather_descriptions}</p>
+        <p>{weather.current.weather[0].description}</p>
         <img src={mapUrl} alt={`map of ${weather?.location?.region}`} />
       </main>
     </div>
