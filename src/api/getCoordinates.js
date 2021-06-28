@@ -7,9 +7,10 @@ export default async function getCoordinates(address) {
   );
 
   const coordinateData = await response.json();
-
+  console.log(coordinateData);
   if (coordinateData) {
     const coordinates = coordinateData.results[0].locations[0].latLng;
+    // write function to format address
     return coordinates;
   }
 }

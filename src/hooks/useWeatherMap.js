@@ -1,19 +1,20 @@
-import { useState } from 'react';
-import { getWeatherMap } from '../api';
+import { useState } from "react";
+import { getWeatherMap } from "../api";
 
 export default function useWeatherMap() {
-  const [weatherMap, setWeatherMap] = useState();
+  const [mapUrl, setMapUrl] = useState();
 
-  const updateWeatherMap = async (coordinates) => {
+  const updateMapUrl = async (coordinates) => {
     try {
-      const weatherMap = await getWeatherMap(coordinates);
-      if (weatherMap) {
-        setWeatherMap(weatherMap);
+      const mapUrl = await getWeatherMap(coordinates);
+      console.log(mapUrl);
+      if (mapUrl) {
+        setMapUrl(mapUrl);
       }
     } catch (err) {
       console.log(err);
     }
   };
 
-  return { weatherMap, updateWeatherMap };
+  return { mapUrl, updateMapUrl };
 }
