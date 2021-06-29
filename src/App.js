@@ -1,4 +1,4 @@
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import { getCoordinates } from "./api";
 import "./App.css";
 import useWeather from "./hooks/useWeather";
@@ -10,12 +10,16 @@ function App() {
   // Keeping weather and weatherMap in the state because they're connected to the element on the page
   const { isWeatherLoading, updateWeather, weather } = useWeather();
   const { mapUrl, updateMapUrl } = useWeatherMap();
+  const [currentAddress, setCurrentAddress] = useState("");
 
   const handleSubmit = async (event) => {
     event.preventDefault();
     const address = inputRef.current.value;
     // not keeping coordinates in state because it's not directly connected to what gets rendered on the page
-    const coordinates = await getCoordinates(address);
+    const { coordinates, formattedAddress } = await getCoordinates(address);
+
+    console.log(formattedAddress);
+    setCurrentAddress(formattedAddress);
     updateWeather(coordinates);
     updateMapUrl(coordinates);
   };
@@ -37,10 +41,10 @@ function App() {
         <LargeWeather
           loading={isWeatherLoading}
           description={description}
-          // address={address}
+          address={currentAddress}
         />
 
-        {mapUrl && <img src={mapUrl} alt={`map of`} />}
+        {mapUrl && <img src={mapUrl} alt={`map of ${currentAddress}`} />}
       </main>
     </div>
   );
