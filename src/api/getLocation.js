@@ -1,4 +1,4 @@
-export default async function getCoordinates(address) {
+export default async function getLocation(address) {
   const formatAddress = ({ results }) => {
     const formattedAdress = results.map((result) => {
       const { adminArea5, adminArea3, adminArea1 } = result.locations[0];
@@ -14,7 +14,7 @@ export default async function getCoordinates(address) {
         return `${city}, ${state}, ${country}`;
       }
     });
-    return formattedAdress.join(",");
+    return formattedAdress[0];
   };
 
   if (!address) return;

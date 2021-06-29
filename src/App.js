@@ -1,5 +1,5 @@
 import { useRef, useState } from "react";
-import { getCoordinates } from "./api";
+import { getLocation } from "./api";
 import "./App.css";
 import useWeather from "./hooks/useWeather";
 import useWeatherMap from "./hooks/useWeatherMap";
@@ -16,7 +16,7 @@ function App() {
     event.preventDefault();
     const address = inputRef.current.value;
     // not keeping coordinates in state because it's not directly connected to what gets rendered on the page
-    const { coordinates, formattedAddress } = await getCoordinates(address);
+    const { coordinates, formattedAddress } = await getLocation(address);
 
     console.log(formattedAddress);
     setCurrentAddress(formattedAddress);
