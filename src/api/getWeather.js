@@ -1,5 +1,6 @@
 export default async function getWeather(coordinates) {
   if (!coordinates) return;
+  // destructure lat, lng
   const { lat, lng } = coordinates;
   if (!lat || !lng) return;
 
@@ -49,7 +50,7 @@ export default async function getWeather(coordinates) {
         };
       }),
     };
-
+    console.log(weather);
     return weather;
   } catch (err) {
     console.log(err);
