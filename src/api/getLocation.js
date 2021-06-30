@@ -1,20 +1,16 @@
 export default async function getLocation(address) {
-  const formatAddress = ({ results }) => {
-    const formattedAdress = results.map((result) => {
-      const { adminArea5, adminArea3, adminArea1 } = result.locations[0];
-      const addressObj = {
-        city: adminArea5,
-        state: adminArea3,
-        country: adminArea1,
-      };
-      const { city, state, country } = addressObj;
-      if (state === "") {
-        return `${city}, ${country}`;
-      } else {
-        return `${city}, ${state}, ${country}`;
-      }
-    });
-    return formattedAdress[0];
+  const formatAddress = ({ locations }) => {
+    const { adminArea5, adminArea3, adminArea1 } = locations[0];
+    const addressObj = {
+      city: adminArea5,
+      state: adminArea3,
+      country: adminArea1,
+    };
+    const { city, state, country } = addressObj;
+    const result =
+      state === "" ? `${city}, ${country}` : `${city}, ${state}, ${country}`;
+
+    return result;
   };
 
   if (!address) return;
@@ -27,9 +23,11 @@ export default async function getLocation(address) {
   const coordinateData = await response.json();
 
   if (coordinateData) {
+    const addressData = coordinateData.results[0];
     const coordinates = coordinateData.results[0].locations[0].latLng;
     // city, province/state, country
-    const formattedAddress = formatAddress(coordinateData);
+    const formattedAddress = formatAddress(addressData);
+
     return {
       coordinates,
       formattedAddress,
