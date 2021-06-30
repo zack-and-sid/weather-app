@@ -6,10 +6,9 @@ export default function useWeatherMap() {
 
   const updateMapUrl = async (coordinates) => {
     try {
-      const mapUrl = await getWeatherMap(coordinates);
-      console.log(mapUrl);
-      if (mapUrl) {
-        setMapUrl(mapUrl);
+      const weatherMap = await getWeatherMap(coordinates);
+      if (weatherMap) {
+        setMapUrl(weatherMap);
       }
     } catch (err) {
       console.log(err);
