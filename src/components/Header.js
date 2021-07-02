@@ -1,5 +1,16 @@
 import { useRef } from "react";
+import { getLocation } from "../api";
+import styled from "styled-components";
+
+const StyledHeader = styled.header`
+  h1 {
+    color: white;
+    font-size: 5rem;
+  }
+`;
+
 const Header = (props) => {
+  const { updateWeather, updateMapUrl, updateAddress } = props;
   const inputRef = useRef();
 
   const handleSubmit = async (event) => {
@@ -9,20 +20,20 @@ const Header = (props) => {
     const { coordinates, formattedAddress } = await getLocation(address);
 
     console.log(formattedAddress);
-    setCurrentAddress(formattedAddress);
+    updateAddress(formattedAddress);
     updateWeather(coordinates);
     updateMapUrl(coordinates);
   };
 
   return (
-    <header className="App-header">
-      <h1>Weather App</h1>
+    <StyledHeader className="App-header">
+      <h1>weathr</h1>
       <form onSubmit={handleSubmit}>
         <label htmlFor="address">Address</label>
         <input type="text" id="address" ref={inputRef} />
         <button type="submit">Submit</button>
       </form>
-    </header>
+    </StyledHeader>
   );
 };
 

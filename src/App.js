@@ -1,11 +1,8 @@
-import { useState } from "react";
-import { getLocation } from "./api";
 import useWeather from "./hooks/useWeather";
 import useWeatherMap from "./hooks/useWeatherMap";
 import LargeWeather from "./components/LargeWeather";
 import Header from "./components/Header";
 import useAddress from "./hooks/useAddress";
-
 
 function App() {
   // Keeping weather and weatherMap in the state because they're connected to the element on the page
@@ -19,7 +16,11 @@ function App() {
 
   return (
     <div className="App">
-      <Header />
+      <Header
+        updateWeather={updateWeather}
+        updateMapUrl={updateMapUrl}
+        updateAddress={updateAddress}
+      />
       <main>
         <LargeWeather
           loading={isWeatherLoading}
