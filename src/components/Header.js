@@ -37,7 +37,7 @@ const StyledHeader = styled.header`
     position: absolute;
     bottom: -10px;
     right: 10px;
-    width: 45px;
+    width: 50px;
     height: 26px;
     background-color: rgba(255, 255, 255, 0.6);
     border-radius: 20px;
@@ -46,31 +46,33 @@ const StyledHeader = styled.header`
   .toggle::after {
     content: "";
     position: absolute;
-    bottom: -7px;
+    bottom: -7.5px;
     right: 13px;
     width: 20px;
     height: 20px;
     background-color: white;
     border-radius: 50%;
+    border: 0.5px solid rgba(97, 92, 154, 0.5);
     transition: all 200ms ease-out;
   }
 
   input[type="checkbox"]:checked + .toggle::after {
-    right: 32px;
+    right: 36px;
   }
 
   .unit {
     font-size: 1rem;
     position: relative;
     top: 6px;
+    color: rgba(97, 92, 154);
   }
 
   .celcius {
-    left: -35px;
+    left: -39px;
   }
 
   .farenheit {
-    right: 15px;
+    right: 16px;
   }
 `;
 
@@ -83,13 +85,7 @@ const Header = (props) => {
   // for unit checkbox
   const handleChange = () => {
     setChecked(!checked);
-    if (checked === true) {
-      console.log("metric");
-      setUnits("metric");
-    } else {
-      console.log("imperial");
-      setUnits("imperial");
-    }
+    checked ? setUnits("metric") : setUnits("imperial");
   };
 
   const handleSubmit = async (event) => {
