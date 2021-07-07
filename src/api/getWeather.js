@@ -5,7 +5,7 @@ export default async function getWeather(coordinates, units) {
   if (!lat || !lng) return;
 
   const openWeatherAPI = process.env.REACT_APP_OPEN_WEATHER_API;
-  const url = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lng}&exclude=minutely&appid=${openWeatherAPI}&units=${units}`;
+  const url = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lng}&exclude=minutely&appid=${openWeatherAPI}&units=metric`;
   console.log(url);
   try {
     const response = await fetch(url);

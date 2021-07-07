@@ -1,6 +1,7 @@
-import { useRef, useState } from "react";
+import { useRef } from "react";
 import { getLocation } from "../api";
 import styled from "styled-components";
+import Toggle from "./Toggle";
 
 const StyledHeader = styled.header`
   .wrapper {
@@ -77,26 +78,26 @@ const StyledHeader = styled.header`
 `;
 
 const Header = (props) => {
-  const [checked, setChecked] = useState(false);
-  const [units, setUnits] = useState("metric");
-  const { updateWeather, updateMapUrl, updateAddress } = props;
+  const {
+    updateWeather,
+    updateMapUrl,
+    updateAddress,
+    toggleTemp,
+    isMetric,
+  } = props;
   const inputRef = useRef();
 
   // for unit checkbox
-  const handleChange = () => {
-    setChecked(!checked);
-    checked ? setUnits("metric") : setUnits("imperial");
-  };
 
   const handleSubmit = async (event) => {
     event.preventDefault();
     const address = inputRef.current.value;
     // not keeping coordinates in state because it's not directly connected to what gets rendered on the page
     const { coordinates, formattedAddress } = await getLocation(address);
-    console.log(units);
+
     console.log(formattedAddress);
     updateAddress(formattedAddress);
-    updateWeather(coordinates, units);
+    updateWeather(coordinates);
     updateMapUrl(coordinates);
   };
 
@@ -105,19 +106,7 @@ const Header = (props) => {
       <div className="wrapper">
         <div className="flex">
           <h1>weathr</h1>
-          <input
-            type="checkbox"
-            id="unit"
-            checked={checked}
-            onChange={handleChange}
-          />
-          <label htmlFor="unit" className="toggle">
-            {!checked ? (
-              <span className="unit celcius">℃</span>
-            ) : (
-              <span className="unit farenheit">℉</span>
-            )}
-          </label>
+          <Toggle toggleTemp={toggleTemp} isMetric={isMetric} />
         </div>
         <form onSubmit={handleSubmit}>
           <label htmlFor="address">Address</label>
