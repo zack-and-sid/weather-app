@@ -3,11 +3,21 @@ import setupCSS from "./setup";
 
 export default createGlobalStyle`
   ${setupCSS}
+  
+  html {
+    font-size: 62.5%;
+  }
 
   body {
     padding: 0;
     margin: 0;
-    background-color: orange;
+    font-size: 2rem;
+
   } 
+
+  button {
+    background: none;
+    border: 0;
+  }
 
 `;

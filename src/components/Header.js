@@ -1,18 +1,24 @@
 import { useRef } from "react";
 import { getLocation } from "../api";
 import styled from "styled-components";
+import { FaSearch } from "react-icons/fa";
 import Toggle from "./Toggle";
+import { ReactComponent as Logo } from "../assets/weathr.svg";
 
 const StyledHeader = styled.header`
+  background-color: orange;
+  padding: 2rem 0;
+
   .wrapper {
-    width: 90%;
+    width: 85%;
     margin: 0 auto;
   }
 
   h1 {
-    color: white;
-    font-size: 3rem;
-    padding: 2rem 0;
+    padding: 1rem 0;
+    svg {
+      transform: scale(1.1);
+    }
   }
 
   .flex {
@@ -21,59 +27,38 @@ const StyledHeader = styled.header`
     align-items: center;
   }
 
-  input[type="checkbox"] {
-    position: absolute;
-    opacity: 0;
-    right: 0;
-    /* top: -100px; */
+  .user-input {
+    padding: 8px;
+    background: white;
+    width: auto;
+    display: inline-block;
+    border-radius: 5px;
+    display: flex;
+    justify-content: space-between;
   }
 
-  .toggle {
-    cursor: pointer;
-    position: relative;
+  input {
+    border: 0;
+    font-size: 2rem;
+    width: 80%;
+    min-width: 0;
   }
 
-  .toggle::before {
-    content: "";
-    position: absolute;
-    bottom: -10px;
-    right: 10px;
-    width: 50px;
-    height: 26px;
-    background-color: rgba(255, 255, 255, 0.6);
-    border-radius: 20px;
-  }
-
-  .toggle::after {
-    content: "";
-    position: absolute;
-    bottom: -7.5px;
-    right: 13px;
-    width: 20px;
-    height: 20px;
-    background-color: white;
-    border-radius: 50%;
-    border: 0.5px solid rgba(97, 92, 154, 0.5);
-    transition: all 200ms ease-out;
-  }
-
-  input[type="checkbox"]:checked + .toggle::after {
-    right: 36px;
-  }
-
-  .unit {
-    font-size: 1rem;
-    position: relative;
-    top: 6px;
-    color: rgba(97, 92, 154);
-  }
-
-  .celcius {
-    left: -39px;
-  }
-
-  .farenheit {
-    right: 16px;
+  button {
+    font-size: 2rem;
+    svg {
+      transform: scale(1.3);
+      fill: lightgrey;
+      transition: all 200ms ease;
+      /* position: relative; */
+      /* top: 1px; */
+    }
+    &:hover,
+    &:focus {
+      svg {
+        fill: grey;
+      }
+    }
   }
 `;
 
@@ -105,13 +90,21 @@ const Header = (props) => {
     <StyledHeader className="App-header">
       <div className="wrapper">
         <div className="flex">
-          <h1>weathr</h1>
+          <h1>
+            <Logo aria-label="weathr" role="img" />
+          </h1>
           <Toggle toggleTemp={toggleTemp} isMetric={isMetric} />
         </div>
         <form onSubmit={handleSubmit}>
-          <label htmlFor="address">Address</label>
-          <input type="text" id="address" ref={inputRef} />
-          <button type="submit">Submit</button>
+          <div className="user-input">
+            <label htmlFor="address" className="visually-hidden">
+              Address
+            </label>
+            <input type="text" id="address" ref={inputRef} />
+            <button type="submit">
+              <FaSearch />
+            </button>
+          </div>
         </form>
       </div>
     </StyledHeader>
