@@ -17,7 +17,7 @@ function App() {
   const temp = weather?.current?.temp;
 
   const toggleTemp = () => {
-    console.log("toggled");
+    // console.log("toggled");
     setIsMetric(!isMetric);
   };
 

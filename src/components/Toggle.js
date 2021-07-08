@@ -29,8 +29,8 @@ const StyledToggle = styled.div`
   .toggle::after {
     content: "";
     position: absolute;
-    bottom: -7.5px;
-    right: 13px;
+    bottom: -8px;
+    right: 12px;
     width: 20px;
     height: 20px;
     background-color: white;
@@ -44,18 +44,18 @@ const StyledToggle = styled.div`
   }
 
   .unit {
-    font-size: 1.9rem;
+    font-size: 1.8rem;
     position: relative;
-    top: 6px;
+    top: 8px;
     color: rgba(97, 92, 154);
   }
 
   .celcius {
-    left: -39px;
+    right: 15px;
   }
 
   .farenheit {
-    right: 16px;
+    right: 38px;
   }
 `;
 
@@ -63,6 +63,11 @@ const Toggle = ({ toggleTemp, isMetric }) => {
   const handleChange = () => {
     toggleTemp();
   };
+  if (isMetric) {
+    console.log("true");
+  } else {
+    console.log("false");
+  }
 
   return (
     <StyledToggle>
@@ -73,7 +78,7 @@ const Toggle = ({ toggleTemp, isMetric }) => {
         onChange={handleChange}
       />
       <label htmlFor="unit" className="toggle">
-        {!isMetric ? (
+        {isMetric ? (
           <span className="unit celcius">℃</span>
         ) : (
           <span className="unit farenheit">℉</span>
