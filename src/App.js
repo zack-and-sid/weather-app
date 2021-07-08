@@ -1,3 +1,4 @@
+import { useState } from "react";
 import useWeather from "./hooks/useWeather";
 import useWeatherMap from "./hooks/useWeatherMap";
 import LargeWeather from "./components/LargeWeather";
@@ -10,9 +11,15 @@ function App() {
   const { mapUrl, updateMapUrl } = useWeatherMap();
   // const [currentAddress, setCurrentAddress] = useState("");
   const { currentAddress, updateAddress } = useAddress();
+  const [isMetric, setIsMetric] = useState(true);
 
   const description = weather?.current?.weather[0]?.description;
-  // const address = inputRef.current.value;
+  const temp = weather?.current?.temp;
+
+  const toggleTemp = () => {
+    // console.log("toggled");
+    setIsMetric(!isMetric);
+  };
 
   return (
     <div className="App">
@@ -20,12 +27,16 @@ function App() {
         updateWeather={updateWeather}
         updateMapUrl={updateMapUrl}
         updateAddress={updateAddress}
+        toggleTemp={toggleTemp}
+        isMetric={isMetric}
       />
       <main>
         <LargeWeather
           loading={isWeatherLoading}
           description={description}
           address={currentAddress}
+          temp={temp}
+          isMetric={isMetric}
         />
 
         {mapUrl && <img src={mapUrl} alt={`map of ${currentAddress}`} />}

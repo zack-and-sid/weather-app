@@ -1,5 +1,5 @@
-import { useState } from 'react';
-import { getWeather } from '../api';
+import { useState } from "react";
+import { getWeather } from "../api";
 
 /**
  * @returns {{weather: Object, updateWeather: (coordinates) => void, isWeatherLoading: boolean}}
