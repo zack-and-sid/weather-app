@@ -1,9 +1,9 @@
-import { useState } from "react";
-import useWeather from "./hooks/useWeather";
-import useWeatherMap from "./hooks/useWeatherMap";
-import LargeWeather from "./components/LargeWeather";
-import Header from "./components/Header";
-import useAddress from "./hooks/useAddress";
+import { useState } from 'react';
+import useWeather from './hooks/useWeather';
+import useWeatherMap from './hooks/useWeatherMap';
+import Header from './components/Header';
+import useAddress from './hooks/useAddress';
+import Weather from './components/Weather';
 
 function App() {
   // Keeping weather and weatherMap in the state because they're connected to the element on the page
@@ -13,13 +13,50 @@ function App() {
   const { currentAddress, updateAddress } = useAddress();
   const [isMetric, setIsMetric] = useState(true);
 
-  const description = weather?.current?.weather[0]?.description;
-  const temp = weather?.current?.temp;
-
   const toggleTemp = () => {
     // console.log("toggled");
     setIsMetric(!isMetric);
   };
+
+  // Transform weather into an array of 7 daily weathers
+  const { current, hourly } = weather;
+
+  const getMoonPhase = (originalValue) => {
+    return Math.round(originalValue * 7);
+  };
+
+  const getAverage = (min, max) => {
+    return (min + max) / 2;
+  };
+
+  const weatherDays = weather.daily.map((day, i) => {
+    if (i === 0) {
+      return {
+        temp: current.temp,
+        feelsLike: current.feels_like,
+        sunrise: current.sunrise * 1000,
+        sunset: current.sunset * 1000,
+        description: current.weather[0].description,
+        icon: current.weather[0].icon,
+        moonPhase: getMoonPhase(day.moonPhase),
+        pop: hourly[0].pop,
+        min: day.temp.min,
+        max: day.temp.max,
+      };
+    }
+    return {
+      temp: getAverage(day.temp.min, day.temp.max),
+      feelsLike: getAverage(day.feelsLike.day, day.feelsLike.eve),
+      sunrise: day.sunrise * 1000,
+      sunset: day.sunset * 1000,
+      description: day.weather.description,
+      icon: day.weather.icon,
+      moonPhase: getMoonPhase(day.moonPhase),
+      pop: undefined,
+      min: day.temp.min,
+      max: day.temp.max,
+    };
+  });
 
   return (
     <div className="App">
@@ -30,17 +67,13 @@ function App() {
         toggleTemp={toggleTemp}
         isMetric={isMetric}
       />
-      <main>
-        <LargeWeather
-          loading={isWeatherLoading}
-          description={description}
-          address={currentAddress}
-          temp={temp}
-          isMetric={isMetric}
-        />
-
-        {mapUrl && <img src={mapUrl} alt={`map of ${currentAddress}`} />}
-      </main>
+      <Weather
+        weatherDays={weatherDays}
+        isMetric={isMetric}
+        mapUrl={mapUrl}
+        loading={isWeatherLoading}
+        address={currentAddress}
+      />
     </div>
   );
 }
