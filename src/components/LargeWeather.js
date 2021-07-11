@@ -1,5 +1,5 @@
-import InfoDisplay from './InfoDisplay';
-import styled from 'styled-components';
+import InfoDisplay from "./InfoDisplay";
+import styled from "styled-components";
 
 const StyledLargeWeather = styled.article`
   height: 50vh;
@@ -9,7 +9,7 @@ const StyledLargeWeather = styled.article`
     position: absolute;
     top: 0;
     left: -30%;
-    content: '';
+    content: "";
     display: block;
     width: 100%;
     height: 100%;
@@ -19,7 +19,7 @@ const StyledLargeWeather = styled.article`
         rgba(255, 255, 255, 0.65) 50%,
         rgba(255, 255, 255, 0.95) 98%
       ),
-      url('${({ $mapUrl }) => $mapUrl}');
+      url("${({ $mapUrl }) => $mapUrl}");
     background-repeat: no-repeat;
     /* background-size: cover; */
     background-size: 105% 105%;
@@ -34,7 +34,7 @@ export default function LargeWeather(props) {
   const getTemp = (isMetric, temp) => {
     if (temp) {
       const temperature = isMetric ? temp : (temp * 9) / 5 + 32;
-      return Math.round(temperature) + '°';
+      return Math.round(temperature) + "°";
     }
     return;
   };
@@ -44,7 +44,7 @@ export default function LargeWeather(props) {
   return (
     <StyledLargeWeather $mapUrl={mapUrl}>
       <h2>{address}</h2>
-      <p>{loading ? 'loading...' : description}</p>
+      <p>{loading ? "loading..." : description}</p>
       <p>{temperature}</p>
       <InfoDisplay />
     </StyledLargeWeather>
