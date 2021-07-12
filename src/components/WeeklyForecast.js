@@ -1,9 +1,9 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
-const StyledWeeklyForecast = styled('div')``;
+const StyledWeeklyForecast = styled("div")``;
 
-const WeeklyForecast = () => {
-  return <StyledWeeklyForecast>WeeklyForecast</StyledWeeklyForecast>;
+const WeeklyForecast = (props) => {
+  return <StyledWeeklyForecast></StyledWeeklyForecast>;
 };
 
 export default WeeklyForecast;

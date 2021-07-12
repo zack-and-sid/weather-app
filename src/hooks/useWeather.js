@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { getWeather } from "../api";
-
+import moment from "moment";
 /**
  * @returns {{weather: Object, updateWeather: (coordinates) => void, isWeatherLoading: boolean}}
  */
@@ -20,40 +20,92 @@ export default function useWeather() {
   // Transform weather into an array of 7 daily weathers
   const { current, hourly, daily } = weather;
 
-  const getMoonPhase = (originalValue) => {
-    return Math.round(originalValue * 7);
+  const getMoonPhase = (ogValue) => {
+    /* 
+    0 = new moon
+    0 - 0.25 = W
+    0.25 = first quarter moon
+    0.25 - 0.5 = Waxing Gibbous
+    0.5 = full moon
+    0.5 - 0.75 = Waning Gibbous
+    0.75 = last quarter moon
+    0.75 - 1 = Waning Crescent
+    1 = new moon
+    */
+
+    if (ogValue === 0 || ogValue === 1) {
+      return "New Moon";
+    } else if (ogValue > 0 && ogValue < 0.25) {
+      return "Waxing Crescent";
+    } else if (ogValue > 0.25 && ogValue < 0.5) {
+      return "Waxing Gibbous";
+    } else if (ogValue > 0.5 && ogValue < 0.75) {
+      return "Waning Gibbous";
+    } else if (ogValue > 0.75 && ogValue < 1) {
+      return "Waning Crescent";
+    } else if (ogValue === 0.25) {
+      return "First Quarter Moon";
+    } else if (ogValue === 0.5) {
+      return "Full Moon";
+    } else if (ogValue === 0.75) {
+      return "Last Quarter Moon";
+    }
   };
 
   const getAverage = (min, max) => {
-    return (min + max) / 2;
+    const average = (min + max) / 2;
+    return roundTemp(average);
+  };
+
+  const roundTemp = (temp) => {
+    return Math.round(temp);
+  };
+
+  const formatPop = (num) => {
+    const percentage = num * 100;
+    return Math.round(percentage) + "%";
+  };
+
+  const formatTime = (time) => {
+    const m = moment(time);
+    const formattedTime = m.format("h:mma");
+    return formattedTime;
+  };
+
+  const formatDate = (time) => {
+    const m = moment(time);
+    const formattedDate = m.format("ddd, MMM D");
+    return formattedDate;
   };
 
   const weatherDays = daily.map((day, i) => {
     if (i === 0) {
       return {
-        temp: current.temp,
-        feelsLike: current.feels_like,
-        sunrise: current.sunrise * 1000,
-        sunset: current.sunset * 1000,
+        temp: roundTemp(current.temp),
+        feelsLike: roundTemp(current.feels_like),
+        sunrise: formatTime(current.sunrise * 1000),
+        sunset: formatTime(current.sunset * 1000),
         description: current.weather[0].description,
         icon: current.weather[0].icon,
         moonPhase: getMoonPhase(day.moonPhase),
-        pop: hourly[0].pop,
-        min: day.temp.min,
-        max: day.temp.max,
+        pop: formatPop(hourly[0].pop),
+        min: roundTemp(day.temp.min),
+        max: roundTemp(day.temp.max),
+        date: formatDate(current.sunrise * 1000),
       };
     }
     return {
       temp: getAverage(day.temp.min, day.temp.max),
       feelsLike: getAverage(day.feelsLike.day, day.feelsLike.eve),
-      sunrise: day.sunrise * 1000,
-      sunset: day.sunset * 1000,
+      sunrise: formatTime(day.sunrise * 1000),
+      sunset: formatTime(day.sunset * 1000),
       description: day.weather.description,
       icon: day.weather.icon,
       moonPhase: getMoonPhase(day.moonPhase),
       pop: undefined,
-      min: day.temp.min,
-      max: day.temp.max,
+      min: roundTemp(day.temp.min),
+      max: roundTemp(day.temp.max),
+      date: formatDate(day.sunrise * 1000),
     };
   });
 
