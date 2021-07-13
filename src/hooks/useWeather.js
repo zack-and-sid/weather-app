@@ -1,6 +1,6 @@
-import { useState } from "react";
-import { getWeather } from "../api";
-import moment from "moment";
+import { useState } from 'react';
+import { getWeather } from '../api';
+import moment from 'moment';
 /**
  * @returns {{weather: Object, updateWeather: (coordinates) => void, isWeatherLoading: boolean}}
  */
@@ -34,21 +34,21 @@ export default function useWeather() {
     */
 
     if (ogValue === 0 || ogValue === 1) {
-      return "New Moon";
+      return { description: 'New Moon', iconURL: '' };
     } else if (ogValue > 0 && ogValue < 0.25) {
-      return "Waxing Crescent";
+      return { description: 'Waxing Crescent', iconURL: '' };
     } else if (ogValue > 0.25 && ogValue < 0.5) {
-      return "Waxing Gibbous";
+      return { description: 'Waxing Gibbous', iconURL: '' };
     } else if (ogValue > 0.5 && ogValue < 0.75) {
-      return "Waning Gibbous";
+      return { description: 'Waning Gibbous', iconURL: '' };
     } else if (ogValue > 0.75 && ogValue < 1) {
-      return "Waning Crescent";
+      return { description: 'Waning Crescent', iconURL: '' };
     } else if (ogValue === 0.25) {
-      return "First Quarter Moon";
+      return { description: 'First Quarter Moon', iconURL: '' };
     } else if (ogValue === 0.5) {
-      return "Full Moon";
+      return { description: 'Full Moon', iconURL: '' };
     } else if (ogValue === 0.75) {
-      return "Last Quarter Moon";
+      return { description: 'Last Quarter Moon', iconURL: '' };
     }
   };
 
@@ -63,22 +63,23 @@ export default function useWeather() {
 
   const formatPop = (num) => {
     const percentage = num * 100;
-    return Math.round(percentage) + "%";
+    return Math.round(percentage) + '%';
   };
 
   const formatTime = (time) => {
     const m = moment(time);
-    const formattedTime = m.format("h:mma");
+    const formattedTime = m.format('h:mma');
     return formattedTime;
   };
 
   const formatDate = (time) => {
     const m = moment(time);
-    const formattedDate = m.format("ddd, MMM D");
+    const formattedDate = m.format('ddd, MMM D');
     return formattedDate;
   };
 
-  const weatherDays = daily.map((day, i) => {
+  // remove last element (day)
+  const weatherDays = daily.slice(0, -1).map((day, i) => {
     if (i === 0) {
       return {
         temp: roundTemp(current.temp),

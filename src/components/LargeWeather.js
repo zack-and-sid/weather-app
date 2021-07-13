@@ -1,18 +1,18 @@
-import InfoDisplay from "./InfoDisplay";
-import styled from "styled-components";
+import InfoDisplay from './InfoDisplay';
+import styled from 'styled-components';
 // import Sunrise from "./Sunrise";
-import { ReactComponent as Sunrise } from "../assets/sunrise.svg";
-import { ReactComponent as Sunset } from "../assets/sunset.svg";
 
 const StyledLargeWeather = styled.article`
+  display: flex;
   height: 50vh;
+  min-height: 35rem;
   position: relative;
 
   &::after {
     position: absolute;
     top: 0;
     left: -30%;
-    content: "";
+    content: '';
     display: block;
     width: 105%;
     height: 105%;
@@ -22,7 +22,7 @@ const StyledLargeWeather = styled.article`
         rgba(255, 255, 255, 0.65) 50%,
         rgba(255, 255, 255, 0.95) 98%
       ),
-      url("${({ $mapUrl }) => $mapUrl}");
+      url('${({ $mapUrl }) => $mapUrl}');
     background-repeat: no-repeat;
     background-size: cover;
     /* background-size: 105% 105%; */
@@ -36,7 +36,16 @@ const StyledLargeWeather = styled.article`
 `;
 
 export default function LargeWeather(props) {
-  const { loading, isMetric, mapUrl, displayWeather, address } = props;
+  const {
+    loading,
+    isMetric,
+    mapUrl,
+    displayWeather,
+    address,
+    setWeatherIndex,
+  } = props;
+
+  console.log(displayWeather);
 
   console.log(displayWeather);
   const {
@@ -51,48 +60,26 @@ export default function LargeWeather(props) {
     moonPhase,
   } = displayWeather;
 
-  const getTemp = (isMetric, temp) => {
-    if (temp) {
-      const temperature = isMetric ? temp : (temp * 9) / 5 + 32;
-      return temperature + "°";
-    }
-    return;
-  };
-
-  const temperature = getTemp(isMetric, temp);
-  const feelsLikeTemperature = getTemp(isMetric, feelsLike);
-
   return (
     <StyledLargeWeather $mapUrl={mapUrl}>
-      <h2>{address}</h2>
-      <time dateTime={date}>{date}</time>
-      {/* <span>{loading ? "loading..." : description}</span> */}
-      <span className="temperature">{temperature}</span>
-      {temp === feelsLikeTemperature ? null : (
-        <span className="feels-like">feels like {feelsLikeTemperature}</span>
-      )}
-      <div className="icon-container">
-        <img
-          src={`http://openweathermap.org/img/wn/${icon}@2x.png`}
-          alt={description}
-        />
-      </div>
-      {pop && <span className="pop">{pop}</span>}
-      <div>
-        <div>
-          <Sunrise />
-          <span>{sunrise}</span>
-        </div>
-        <div>
-          <Sunset />
-          <span>{sunset}</span>
+      <div className="meta-container">
+        <h2>{address}</h2>
+        <div className="date-container">
+          <button onClick={() => setWeatherIndex(0)}>Today</button>
+          <time dateTime={date}>{date}</time>
         </div>
       </div>
-      <div className="moon-phase">
-        <i>icon</i>
-        <span>{moonPhase}</span>
-      </div>
-      <InfoDisplay />
+      <InfoDisplay
+        temp={temp}
+        description={description}
+        feelsLike={feelsLike}
+        icon={icon}
+        pop={pop}
+        sunrise={sunrise}
+        sunset={sunset}
+        moonPhase={moonPhase}
+        isMetric={isMetric}
+      />
     </StyledLargeWeather>
   );
 }

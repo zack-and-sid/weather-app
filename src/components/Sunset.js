@@ -1,5 +1,0 @@
-const Sunset = () => {
-  return (
-    
-  )
-}

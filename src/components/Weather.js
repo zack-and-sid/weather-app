@@ -1,12 +1,13 @@
-import { useState } from "react";
-import styled from "styled-components";
-import LargeWeather from "./LargeWeather";
-import WeeklyForecast from "./WeeklyForecast";
+import { useState } from 'react';
+import styled from 'styled-components';
+import LargeWeather from './LargeWeather';
+import WeeklyForecast from './WeeklyForecast';
 
 const StyledWeather = styled.main``;
 
 const Weather = ({ weatherDays, isMetric, mapUrl, loading, address }) => {
   const [weatherIndex, setWeatherIndex] = useState(0);
+  const dailys = weatherDays.slice(1);
 
   const displayWeather = weatherDays[weatherIndex];
   return (
@@ -17,8 +18,13 @@ const Weather = ({ weatherDays, isMetric, mapUrl, loading, address }) => {
         loading={loading}
         displayWeather={displayWeather}
         address={address}
+        setWeatherIndex={setWeatherIndex}
       />
-      <WeeklyForecast />
+      <WeeklyForecast
+        dailys={dailys}
+        setWeatherIndex={setWeatherIndex}
+        isMetric={isMetric}
+      />
     </StyledWeather>
   );
 };
