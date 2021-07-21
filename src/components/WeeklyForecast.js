@@ -1,8 +1,12 @@
-import styled from 'styled-components';
-import Day from './Day';
+import styled from "styled-components";
+import Day from "./Day";
 
-const StyledWeeklyForecast = styled('div')`
-  display: flex;
+const StyledWeeklyForecast = styled("div")`
+  background: white;
+  .wrapper-weekly-forecast {
+    display: flex;
+    justify-content: space-around;
+  }
 `;
 
 const WeeklyForecast = ({ dailys, setWeatherIndex, isMetric }) => {
@@ -24,7 +28,11 @@ const WeeklyForecast = ({ dailys, setWeatherIndex, isMetric }) => {
     );
   });
 
-  return <StyledWeeklyForecast>{days}</StyledWeeklyForecast>;
+  return (
+    <StyledWeeklyForecast>
+      <div className="wrapper wrapper-weekly-forecast">{days}</div>
+    </StyledWeeklyForecast>
+  );
 };
 
 export default WeeklyForecast;

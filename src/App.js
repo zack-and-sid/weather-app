@@ -4,7 +4,15 @@ import useWeatherMap from "./hooks/useWeatherMap";
 import Header from "./components/Header";
 import useAddress from "./hooks/useAddress";
 import Weather from "./components/Weather";
+import styled from "styled-components";
 
+const StyledApp = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100vh;
+  overflow: hidden;
+`;
 function App() {
   // Keeping weather and weatherMap in the state because they're connected to the element on the page
   const { isWeatherLoading, updateWeather, weatherDays } = useWeather();
@@ -20,7 +28,7 @@ function App() {
 
   console.log(weatherDays);
   return (
-    <div className="App">
+    <StyledApp className="App">
       <Header
         updateWeather={updateWeather}
         updateMapUrl={updateMapUrl}
@@ -37,7 +45,7 @@ function App() {
           address={currentAddress}
         />
       ) : null}
-    </div>
+    </StyledApp>
   );
 }
 

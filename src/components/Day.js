@@ -1,9 +1,10 @@
-import styled from 'styled-components';
-import { getTemp } from '../utils';
+import styled from "styled-components";
+import { getTemp } from "../utils";
 
 const StyledDay = styled.button`
   display: block;
   width: calc(100% / 6);
+  /* border: 2px solid red; */
 `;
 
 const Day = (props) => {
@@ -17,7 +18,7 @@ const Day = (props) => {
     description,
     isMetric,
   } = props;
-  const day = date.split(',')[0];
+  const day = date.split(",")[0];
   const convertedMin = getTemp(isMetric, min);
   const convertedMax = getTemp(isMetric, max);
 

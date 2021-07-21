@@ -11,7 +11,6 @@ const StyledHeader = styled.header`
 
   .wrapper {
     width: 85%;
-    margin: 0 auto;
   }
 
   h1 {

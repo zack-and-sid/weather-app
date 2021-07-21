@@ -1,5 +1,5 @@
-import { createGlobalStyle } from 'styled-components';
-import setupCSS from './setup';
+import { createGlobalStyle } from "styled-components";
+import setupCSS from "./setup";
 
 export default createGlobalStyle`
   ${setupCSS}
@@ -20,4 +20,17 @@ export default createGlobalStyle`
     border: 0;
   }
 
+   .wrapper {
+    max-width: 900px;
+    margin: 0 auto;
+    /* background: pink; */
+  }
+
+  img {
+    max-width: 100%;
+  }
+  
+  .flex {
+    display: flex;
+  }
 `;
