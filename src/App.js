@@ -1,10 +1,11 @@
-import { useState } from "react";
-import useWeather from "./hooks/useWeather";
-import useWeatherMap from "./hooks/useWeatherMap";
-import Header from "./components/Header";
-import useAddress from "./hooks/useAddress";
-import Weather from "./components/Weather";
-import styled from "styled-components";
+import { useState } from 'react';
+import useWeather from './hooks/useWeather';
+import useWeatherMap from './hooks/useWeatherMap';
+import Header from './components/Header';
+import useAddress from './hooks/useAddress';
+import Weather from './components/Weather';
+import styled from 'styled-components';
+import Footer from './components/Footer';
 
 const StyledApp = styled.div`
   display: flex;
@@ -45,6 +46,7 @@ function App() {
           address={currentAddress}
         />
       ) : null}
+      <Footer />
     </StyledApp>
   );
 }
