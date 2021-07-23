@@ -6,6 +6,7 @@ import useAddress from './hooks/useAddress';
 import Weather from './components/Weather';
 import styled from 'styled-components';
 import Footer from './components/Footer';
+import StartScreen from './components/StartScreen';
 
 const StyledApp = styled.div`
   display: flex;
@@ -45,7 +46,9 @@ function App() {
           loading={isWeatherLoading}
           address={currentAddress}
         />
-      ) : null}
+      ) : (
+        <StartScreen />
+      )}
       <Footer />
     </StyledApp>
   );
