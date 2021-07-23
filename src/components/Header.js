@@ -1,9 +1,9 @@
-import { useRef } from "react";
-import { getLocation } from "../api";
-import styled from "styled-components";
-import { FaSearch } from "react-icons/fa";
-import Toggle from "./Toggle";
-import { ReactComponent as Logo } from "../assets/weathr.svg";
+import { useRef } from 'react';
+import { getLocation } from '../api';
+import styled from 'styled-components';
+import { FaSearch } from 'react-icons/fa';
+import Toggle from './Toggle';
+import { ReactComponent as Logo } from '../assets/weathr.svg';
 
 const StyledHeader = styled.header`
   background-color: orange;
@@ -62,13 +62,8 @@ const StyledHeader = styled.header`
 `;
 
 const Header = (props) => {
-  const {
-    updateWeather,
-    updateMapUrl,
-    updateAddress,
-    toggleTemp,
-    isMetric,
-  } = props;
+  const { updateWeather, updateMapUrl, updateAddress, toggleTemp, isMetric } =
+    props;
   const inputRef = useRef();
 
   // for unit checkbox
@@ -99,7 +94,12 @@ const Header = (props) => {
             <label htmlFor="address" className="visually-hidden">
               Address
             </label>
-            <input type="text" id="address" ref={inputRef} />
+            <input
+              type="text"
+              id="address"
+              ref={inputRef}
+              placeholder="Search for location"
+            />
             <button type="submit">
               <FaSearch />
             </button>
