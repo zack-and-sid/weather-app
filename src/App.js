@@ -28,7 +28,6 @@ function App() {
     setIsMetric(!isMetric);
   };
 
-  console.log(weatherDays);
   return (
     <StyledApp className="App">
       <Header

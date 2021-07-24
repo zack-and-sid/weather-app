@@ -1,11 +1,18 @@
-import styled from "styled-components";
-import Day from "./Day";
+import styled from 'styled-components';
+import Day from './Day';
 
-const StyledWeeklyForecast = styled("div")`
-  background: white;
+const StyledWeeklyForecast = styled('div')`
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: var(--height-forecast);
+  background: rgba(232, 232, 232, 0.5);
+  /* padding-bottom: 5rem; */
   .wrapper-weekly-forecast {
     display: flex;
     justify-content: space-around;
+    /* padding-bottom: 5rem; */
   }
 `;
 

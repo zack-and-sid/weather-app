@@ -11,7 +11,7 @@ export default async function getWeatherMap(coordinates) {
 
     if (response) {
       const { url } = response;
-      console.log(response);
+
       return url;
     }
   }

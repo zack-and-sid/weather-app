@@ -1,31 +1,46 @@
-import styled from "styled-components";
-import { getTemp, formatTemp } from "../utils";
-import { ReactComponent as Sunrise } from "../assets/sunrise.svg";
-import { ReactComponent as Sunset } from "../assets/sunset.svg";
+import styled from 'styled-components';
+import { getTemp, formatTemp } from '../utils';
+import { ReactComponent as Sunrise } from '../assets/sunrise.svg';
+import { ReactComponent as Sunset } from '../assets/sunset.svg';
+import MoonBar from './MoonBar';
 
-const StyledInfoDisplay = styled("div")`
+const StyledInfoDisplay = styled('div')`
   font-size: 1.6rem;
-  margin-top: 20px;
+  padding-bottom: var(--height-forecast);
+  width: 50vw;
+  height: 100%;
+  max-width: 250px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   /* border: 1px solid red; */
 
   .temp-container {
     position: relative;
-    text-align: center;
+    width: fit-content;
 
     .temperature {
-      font-size: 9rem;
+      font-size: var(--fz-xl);
       color: #615c9a;
     }
 
     .feels-like {
       position: absolute;
-      bottom: -10px;
-      right: 15px;
+      width: 100%;
+      bottom: -1em;
+      left: 3ch;
+      font-size: var(--fz-sm);
     }
   }
 
   .pop-icon-container {
     position: relative;
+    display: flex;
+    justify-content: center;
+    .icon-container {
+      height: max(60px, 20vh);
+    }
 
     .pop {
       position: absolute;
@@ -35,31 +50,16 @@ const StyledInfoDisplay = styled("div")`
   }
 
   .sun-container {
-    justify-content: center;
+    /* justify-content: center; */
     width: 60%;
-    margin: -40px auto 0;
+    margin-top: -5vh;
 
     .sun-item {
       display: flex;
       align-items: center;
       flex-direction: column;
-    }
-  }
-
-  .moon-phase {
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    background: #615c9a;
-    padding: 10px;
-    border-radius: 30px 0 0 30px;
-    position: relative;
-    left: 8.5%;
-
-    span {
-      color: white;
-      width: min-content;
-      line-height: 1.2;
+      width: min(max(40px, 5vw), 100%);
+      margin: 1rem;
     }
   }
 `;
@@ -106,10 +106,7 @@ const InfoDisplay = (props) => {
           <span>{sunset}</span>
         </div>
       </div>
-      <div className="moon-phase">
-        <i>icon</i>
-        <span className="">{moonPhase.description}</span>
-      </div>
+      <MoonBar moonPhase={moonPhase} />
     </StyledInfoDisplay>
   );
 };

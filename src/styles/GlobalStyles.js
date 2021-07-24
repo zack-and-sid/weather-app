@@ -1,8 +1,14 @@
-import { createGlobalStyle } from "styled-components";
-import setupCSS from "./setup";
+import { createGlobalStyle } from 'styled-components';
+import setupCSS from './setup';
+import typographyCSS from './typography';
 
-export default createGlobalStyle`
+export default createGlobalStyle`  
+  :root {
+    --height-forecast: 22vh;
+  }
+
   ${setupCSS}
+  ${typographyCSS}
   
   html {
     font-size: 62.5%;
@@ -11,7 +17,7 @@ export default createGlobalStyle`
   body {
     padding: 0;
     margin: 0;
-    font-size: 2rem;
+    font-size: var(--fz-md);
     font-family: 'Roboto', sans-serif;
   } 
 
@@ -20,14 +26,16 @@ export default createGlobalStyle`
     border: 0;
   }
 
-   .wrapper {
-    max-width: 900px;
-    margin: 0 auto;
+  .wrapper {
+    width: 90%;
+    max-width: 800px;
+    margin: 0 auto;    
     /* background: pink; */
   }
 
   img {
     max-width: 100%;
+    max-height: 100%;
   }
   
   .flex {

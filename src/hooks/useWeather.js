@@ -34,21 +34,33 @@ export default function useWeather() {
     */
 
     if (ogValue === 0 || ogValue === 1) {
-      return { description: 'New Moon', iconURL: '' };
+      return {
+        description: 'New Moon',
+        fileName: 'new-moon.png',
+      };
     } else if (ogValue > 0 && ogValue < 0.25) {
-      return { description: 'Waxing Crescent', iconURL: '' };
+      return {
+        description: 'Waxing Crescent',
+        fileName: 'waxing-crescent.png',
+      };
     } else if (ogValue > 0.25 && ogValue < 0.5) {
-      return { description: 'Waxing Gibbous', iconURL: '' };
+      return { description: 'Waxing Gibbous', fileName: 'waxing-gibbous.png' };
     } else if (ogValue > 0.5 && ogValue < 0.75) {
-      return { description: 'Waning Gibbous', iconURL: '' };
+      return { description: 'Waning Gibbous', fileName: 'waning-gibbous.png' };
     } else if (ogValue > 0.75 && ogValue < 1) {
-      return { description: 'Waning Crescent', iconURL: '' };
+      return {
+        description: 'Waning Crescent',
+        fileName: 'waning-crescent.png',
+      };
     } else if (ogValue === 0.25) {
-      return { description: 'First Quarter Moon', iconURL: '' };
+      return {
+        description: 'First Quarter Moon',
+        fileName: 'first-quarter.png',
+      };
     } else if (ogValue === 0.5) {
-      return { description: 'Full Moon', iconURL: '' };
+      return { description: 'Full Moon', fileName: 'full-moon.png' };
     } else if (ogValue === 0.75) {
-      return { description: 'Last Quarter Moon', iconURL: '' };
+      return { description: 'Last Quarter Moon', fileName: 'last-quarter.png' };
     }
   };
 

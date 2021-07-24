@@ -1,24 +1,27 @@
-import InfoDisplay from "./InfoDisplay";
-import styled from "styled-components";
+import InfoDisplay from './InfoDisplay';
+import styled from 'styled-components';
 // import Sunrise from "./Sunrise";
 
 const StyledLargeWeather = styled.article`
   /* min-height: 35rem; */
   /* height: 50vh; */
   font-size: 1.3rem;
+  padding: 2rem 0;
+  height: 100%;
 
   .wrapper-large-weather {
     position: relative;
     display: flex;
     justify-content: space-between;
     width: 95%;
+    height: 100%;
   }
 
   &::after {
     position: absolute;
     top: 0;
     left: -30%;
-    content: "";
+    content: '';
     display: block;
     width: 100%;
     height: 100%;
@@ -28,7 +31,7 @@ const StyledLargeWeather = styled.article`
         rgba(255, 255, 255, 0.65) 50%,
         rgba(255, 255, 255, 0.95) 98%
       ),
-      url("${({ $mapUrl }) => $mapUrl}");
+      url('${({ $mapUrl }) => $mapUrl}');
     background-repeat: no-repeat;
     background-size: cover;
     /* background-size: 105% 105%; */
@@ -38,16 +41,20 @@ const StyledLargeWeather = styled.article`
 
   .meta-container {
     min-width: 125px;
+    .date-container {
+      font-size: var(--fz-md);
+      width: max-content;
+    }
   }
 
   h2 {
-    font-size: 1.5rem;
+    font-size: var(--fz-lg);
     font-weight: bold;
     line-height: 1.3;
   }
 
   button {
-    padding: 2px 8px;
+    padding: 0.1em 0.5em;
     margin-right: 5px;
     background: orange;
     border-radius: 25px;
@@ -64,9 +71,6 @@ export default function LargeWeather(props) {
     setWeatherIndex,
   } = props;
 
-  console.log(displayWeather);
-
-  console.log(displayWeather);
   const {
     temp,
     description,

@@ -5,7 +5,7 @@ const StyledStartScreen = styled('div')`
   padding: 2rem;
   height: 100%;
   .copy {
-    margin: 2em auto;
+    margin: 1em auto;
     position: relative;
     left: 20%;
   }

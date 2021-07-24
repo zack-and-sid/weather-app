@@ -9,10 +9,6 @@ const StyledHeader = styled.header`
   background-color: orange;
   padding: 2rem 0;
 
-  .wrapper {
-    width: 85%;
-  }
-
   h1 {
     padding: 1rem 0;
     svg {
