@@ -1,10 +1,10 @@
-import styled from 'styled-components';
-import { getTemp, formatTemp } from '../utils';
-import { ReactComponent as Sunrise } from '../assets/sunrise.svg';
-import { ReactComponent as Sunset } from '../assets/sunset.svg';
-import MoonBar from './MoonBar';
+import styled from "styled-components";
+import { getTemp, formatTemp } from "../utils";
+import { ReactComponent as Sunrise } from "../assets/sunrise.svg";
+import { ReactComponent as Sunset } from "../assets/sunset.svg";
+import MoonBar from "./MoonBar";
 
-const StyledInfoDisplay = styled('div')`
+const StyledInfoDisplay = styled("div")`
   font-size: 1.6rem;
   padding-bottom: var(--height-forecast);
   width: 50vw;

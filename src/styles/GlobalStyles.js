@@ -1,6 +1,6 @@
-import { createGlobalStyle } from 'styled-components';
-import setupCSS from './setup';
-import typographyCSS from './typography';
+import { createGlobalStyle } from "styled-components";
+import setupCSS from "./setup";
+import typographyCSS from "./typography";
 
 export default createGlobalStyle`  
   :root {
@@ -28,7 +28,7 @@ export default createGlobalStyle`
 
   .wrapper {
     width: 90%;
-    max-width: 800px;
+    max-width: 600px;
     margin: 0 auto;    
     /* background: pink; */
   }
@@ -40,5 +40,15 @@ export default createGlobalStyle`
   
   .flex {
     display: flex;
+  }
+
+  @keyframes fade-in {
+    0% {
+      opacity: 0;
+    }
+
+    100% {
+      opacity: 1;
+    }
   }
 `;

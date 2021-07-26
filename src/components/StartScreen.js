@@ -1,7 +1,7 @@
-import styled from 'styled-components';
-import { ReactComponent as Seasons } from '../assets/seasons.svg';
+import styled from "styled-components";
+import { ReactComponent as Seasons } from "../assets/seasons.svg";
 
-const StyledStartScreen = styled('div')`
+const StyledStartScreen = styled("div")`
   padding: 2rem;
   height: 100%;
   .copy {

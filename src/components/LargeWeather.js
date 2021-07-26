@@ -1,6 +1,5 @@
-import InfoDisplay from './InfoDisplay';
-import styled from 'styled-components';
-// import Sunrise from "./Sunrise";
+import InfoDisplay from "./InfoDisplay";
+import styled from "styled-components";
 
 const StyledLargeWeather = styled.article`
   /* min-height: 35rem; */
@@ -13,7 +12,7 @@ const StyledLargeWeather = styled.article`
     position: relative;
     display: flex;
     justify-content: space-between;
-    width: 95%;
+    width: 90%;
     height: 100%;
   }
 
@@ -21,7 +20,7 @@ const StyledLargeWeather = styled.article`
     position: absolute;
     top: 0;
     left: -30%;
-    content: '';
+    content: "";
     display: block;
     width: 100%;
     height: 100%;
@@ -31,12 +30,15 @@ const StyledLargeWeather = styled.article`
         rgba(255, 255, 255, 0.65) 50%,
         rgba(255, 255, 255, 0.95) 98%
       ),
-      url('${({ $mapUrl }) => $mapUrl}');
+      url("${({ $mapUrl }) => $mapUrl}");
     background-repeat: no-repeat;
     background-size: cover;
-    /* background-size: 105% 105%; */
-
     z-index: -1;
+    opacity: 0;
+    ${({ $mapUrl }) => {
+      console.log({ $mapUrl });
+      return $mapUrl ? "animation: fade-in 4s ease forwards;" : null;
+    }}
   }
 
   .meta-container {
@@ -44,6 +46,7 @@ const StyledLargeWeather = styled.article`
     .date-container {
       font-size: var(--fz-md);
       width: max-content;
+      margin-top: 10px;
     }
   }
 
@@ -54,10 +57,12 @@ const StyledLargeWeather = styled.article`
   }
 
   button {
-    padding: 0.1em 0.5em;
+    padding: 0.2em 0.5em;
+    font-weight: bold;
     margin-right: 5px;
     background: orange;
     border-radius: 25px;
+    box-shadow: 0.5px 0.5px 1px #615c9a;
   }
 `;
 

@@ -1,5 +1,5 @@
-import styled from 'styled-components';
-import { getTemp } from '../utils';
+import styled from "styled-components";
+import { getTemp } from "../utils";
 
 const StyledDay = styled.button`
   display: block;
@@ -18,13 +18,19 @@ const StyledDay = styled.button`
   }
   .icon-container {
     height: 7vh;
+    max-height: 40px;
     img {
-      transform: scale(1.4);
+      transform: scale(2);
       object-position: center;
+      filter: drop-shadow(1px 1px 3px rgba(0, 0, 0, 0.3));
     }
   }
   span {
     display: block;
+  }
+
+  .high-low {
+    margin-top: 5px;
   }
 `;
 
@@ -39,7 +45,7 @@ const Day = (props) => {
     description,
     isMetric,
   } = props;
-  const day = date.split(',')[0];
+  const day = date.split(",")[0];
   const convertedMin = getTemp(isMetric, min);
   const convertedMax = getTemp(isMetric, max);
 
@@ -51,7 +57,7 @@ const Day = (props) => {
           alt={description}
         />
       </span>
-      <span>
+      <span className="high-low">
         {convertedMin}/{convertedMax}
       </span>
       <span>{day}</span>

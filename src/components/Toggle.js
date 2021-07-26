@@ -1,7 +1,7 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
 const StyledToggle = styled.div`
-  input[type='checkbox'] {
+  input[type="checkbox"] {
     position: absolute;
     opacity: 0;
     right: 0;
@@ -16,7 +16,7 @@ const StyledToggle = styled.div`
   }
 
   .toggle::before {
-    content: '';
+    content: "";
     position: absolute;
     bottom: -10px;
     right: 10px;
@@ -27,9 +27,9 @@ const StyledToggle = styled.div`
   }
 
   .toggle::after {
-    content: '';
+    content: "";
     position: absolute;
-    bottom: -8px;
+    bottom: -7.5px;
     right: 12px;
     width: 20px;
     height: 20px;
@@ -39,7 +39,7 @@ const StyledToggle = styled.div`
     transition: all 200ms ease-out;
   }
 
-  input[type='checkbox']:checked + .toggle::after {
+  input[type="checkbox"]:checked + .toggle::after {
     right: 36px;
   }
 

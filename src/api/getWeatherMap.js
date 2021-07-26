@@ -6,7 +6,7 @@ export default async function getWeatherMap(coordinates) {
   if (lat && lng) {
     const mapApiKey = process.env.REACT_APP_MAPQUEST_API;
     const response = await fetch(
-      `https://open.mapquestapi.com/staticmap/v5/map?key=${mapApiKey}&center=${lat},${lng}`
+      `https://open.mapquestapi.com/staticmap/v5/map?size=1000,1000&key=${mapApiKey}&center=${lat},${lng}`
     );
 
     if (response) {

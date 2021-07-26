@@ -1,6 +1,6 @@
-import { useState } from 'react';
-import { getWeather } from '../api';
-import moment from 'moment';
+import { useState } from "react";
+import { getWeather } from "../api";
+import moment from "moment";
 /**
  * @returns {{weather: Object, updateWeather: (coordinates) => void, isWeatherLoading: boolean}}
  */
@@ -35,32 +35,35 @@ export default function useWeather() {
 
     if (ogValue === 0 || ogValue === 1) {
       return {
-        description: 'New Moon',
-        fileName: 'new-moon.png',
+        description: "New Moon",
+        fileName: "new-moon.png",
       };
     } else if (ogValue > 0 && ogValue < 0.25) {
       return {
-        description: 'Waxing Crescent',
-        fileName: 'waxing-crescent.png',
+        description: "Waxing Crescent",
+        fileName: "waxing-crescent.png",
       };
     } else if (ogValue > 0.25 && ogValue < 0.5) {
-      return { description: 'Waxing Gibbous', fileName: 'waxing-gibbous.png' };
+      return { description: "Waxing Gibbous", fileName: "waxing-gibbous.png" };
     } else if (ogValue > 0.5 && ogValue < 0.75) {
-      return { description: 'Waning Gibbous', fileName: 'waning-gibbous.png' };
+      return { description: "Waning Gibbous", fileName: "waning-gibbous.png" };
     } else if (ogValue > 0.75 && ogValue < 1) {
       return {
-        description: 'Waning Crescent',
-        fileName: 'waning-crescent.png',
+        description: "Waning Crescent",
+        fileName: "waning-crescent.png",
       };
     } else if (ogValue === 0.25) {
       return {
-        description: 'First Quarter Moon',
-        fileName: 'first-quarter.png',
+        description: "First Quarter Moon",
+        fileName: "first-quarter.png",
       };
     } else if (ogValue === 0.5) {
-      return { description: 'Full Moon', fileName: 'full-moon.png' };
+      return { description: "Full Moon", fileName: "full-moon.png" };
     } else if (ogValue === 0.75) {
-      return { description: 'Last Quarter Moon', fileName: 'last-quarter.png' };
+      return {
+        description: "Last Quarter Moon",
+        fileName: "third-quarter.png",
+      };
     }
   };
 
@@ -75,18 +78,18 @@ export default function useWeather() {
 
   const formatPop = (num) => {
     const percentage = num * 100;
-    return Math.round(percentage) + '%';
+    return Math.round(percentage) + "%";
   };
 
   const formatTime = (time) => {
     const m = moment(time);
-    const formattedTime = m.format('h:mma');
+    const formattedTime = m.format("h:mma");
     return formattedTime;
   };
 
   const formatDate = (time) => {
     const m = moment(time);
-    const formattedDate = m.format('ddd, MMM D');
+    const formattedDate = m.format("ddd, MMM D");
     return formattedDate;
   };
 
