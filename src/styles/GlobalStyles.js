@@ -1,6 +1,7 @@
-import { createGlobalStyle } from "styled-components";
-import setupCSS from "./setup";
-import typographyCSS from "./typography";
+import { createGlobalStyle } from 'styled-components';
+import setupCSS from './setup';
+import typographyCSS from './typography';
+import keyframesCSS from './keyframes';
 
 export default createGlobalStyle`  
   :root {
@@ -9,6 +10,7 @@ export default createGlobalStyle`
 
   ${setupCSS}
   ${typographyCSS}
+  ${keyframesCSS}
   
   html {
     font-size: 62.5%;
@@ -40,15 +42,5 @@ export default createGlobalStyle`
   
   .flex {
     display: flex;
-  }
-
-  @keyframes fade-in {
-    0% {
-      opacity: 0;
-    }
-
-    100% {
-      opacity: 1;
-    }
   }
 `;

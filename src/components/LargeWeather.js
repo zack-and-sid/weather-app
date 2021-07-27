@@ -1,5 +1,5 @@
-import InfoDisplay from "./InfoDisplay";
-import styled from "styled-components";
+import InfoDisplay from './InfoDisplay';
+import styled from 'styled-components';
 
 const StyledLargeWeather = styled.article`
   /* min-height: 35rem; */
@@ -20,7 +20,7 @@ const StyledLargeWeather = styled.article`
     position: absolute;
     top: 0;
     left: -30%;
-    content: "";
+    content: '';
     display: block;
     width: 100%;
     height: 100%;
@@ -30,14 +30,14 @@ const StyledLargeWeather = styled.article`
         rgba(255, 255, 255, 0.65) 50%,
         rgba(255, 255, 255, 0.95) 98%
       ),
-      url("${({ $mapUrl }) => $mapUrl}");
+      url('${({ $mapUrl }) => $mapUrl}');
     background-repeat: no-repeat;
     background-size: cover;
     z-index: -1;
     opacity: 0;
     ${({ $mapUrl }) => {
       console.log({ $mapUrl });
-      return $mapUrl ? "animation: fade-in 4s ease forwards;" : null;
+      return $mapUrl ? 'animation: fade-in 4s ease forwards;' : null;
     }}
   }
 
@@ -74,6 +74,7 @@ export default function LargeWeather(props) {
     displayWeather,
     address,
     setWeatherIndex,
+    weatherIndex,
   } = props;
 
   const {
@@ -98,7 +99,9 @@ export default function LargeWeather(props) {
             <time dateTime={date}>{date}</time>
           </div>
         </div>
+        {/* Remount InfoDisplay to re-trigger animation when weather index is changed */}
         <InfoDisplay
+          key={weatherIndex}
           temp={temp}
           description={description}
           feelsLike={feelsLike}

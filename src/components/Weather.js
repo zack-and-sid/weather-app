@@ -1,7 +1,7 @@
-import { useState } from "react";
-import styled from "styled-components";
-import LargeWeather from "./LargeWeather";
-import WeeklyForecast from "./WeeklyForecast";
+import { useState } from 'react';
+import styled from 'styled-components';
+import LargeWeather from './LargeWeather';
+import WeeklyForecast from './WeeklyForecast';
 
 const StyledWeather = styled.main`
   display: flex;
@@ -25,6 +25,7 @@ const Weather = ({ weatherDays, isMetric, mapUrl, loading, address }) => {
         displayWeather={displayWeather}
         address={address}
         setWeatherIndex={setWeatherIndex}
+        weatherIndex={weatherIndex}
       />
       <WeeklyForecast
         dailys={dailys}
