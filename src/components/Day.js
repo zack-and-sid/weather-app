@@ -1,5 +1,6 @@
-import styled from "styled-components";
-import { getTemp } from "../utils";
+import { useEffect, useState } from 'react';
+import styled from 'styled-components';
+import { getTemp } from '../utils';
 
 const StyledDay = styled.button`
   display: block;
@@ -7,7 +8,7 @@ const StyledDay = styled.button`
   padding: 2rem 1rem 5rem;
   font-size: var(--fz-sm);
   /* border: 2px solid red; */
-  .active,
+  &.active,
   &:hover {
     background: linear-gradient(
       180deg,
@@ -16,6 +17,7 @@ const StyledDay = styled.button`
       rgba(255, 255, 255, 0) 86.82%
     );
   }
+
   .icon-container {
     height: 7vh;
     max-height: 40px;
@@ -44,13 +46,26 @@ const Day = (props) => {
     icon,
     description,
     isMetric,
+    active,
   } = props;
-  const day = date.split(",")[0];
+
+  const [isActive, setIsActive] = useState(active);
+
+  const day = date.split(',')[0];
   const convertedMin = getTemp(isMetric, min);
   const convertedMax = getTemp(isMetric, max);
 
+  useEffect(() => {
+    console.log({ active });
+    setIsActive(active);
+  }, [active]);
+
+  const handleDayClick = () => {
+    setWeatherIndex(index);
+  };
+
   return (
-    <StyledDay onClick={() => setWeatherIndex(index)}>
+    <StyledDay className={isActive ? 'active' : ''} onClick={handleDayClick}>
       <span className="icon-container icon-small">
         <img
           src={`http://openweathermap.org/img/wn/${icon}@2x.png`}

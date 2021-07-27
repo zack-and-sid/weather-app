@@ -16,7 +16,12 @@ const StyledWeeklyForecast = styled('div')`
   }
 `;
 
-const WeeklyForecast = ({ dailys, setWeatherIndex, isMetric }) => {
+const WeeklyForecast = ({
+  dailys,
+  setWeatherIndex,
+  isMetric,
+  currentWeatherIndex,
+}) => {
   const days = dailys.map((day, i) => {
     const weatherIndex = i + 1;
     const { min, max, date, icon, description } = day;
@@ -31,6 +36,7 @@ const WeeklyForecast = ({ dailys, setWeatherIndex, isMetric }) => {
         icon={icon}
         description={description}
         isMetric={isMetric}
+        active={weatherIndex === currentWeatherIndex}
       />
     );
   });

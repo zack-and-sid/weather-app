@@ -31,6 +31,7 @@ const Weather = ({ weatherDays, isMetric, mapUrl, loading, address }) => {
         dailys={dailys}
         setWeatherIndex={setWeatherIndex}
         isMetric={isMetric}
+        currentWeatherIndex={weatherIndex}
       />
     </StyledWeather>
   );

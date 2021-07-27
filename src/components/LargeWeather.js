@@ -36,7 +36,6 @@ const StyledLargeWeather = styled.article`
     z-index: -1;
     opacity: 0;
     ${({ $mapUrl }) => {
-      console.log({ $mapUrl });
       return $mapUrl ? 'animation: fade-in 4s ease forwards;' : null;
     }}
   }
