@@ -59,9 +59,15 @@ const StyledLargeWeather = styled.article`
     padding: 0.2em 0.5em;
     font-weight: bold;
     margin-right: 5px;
-    background: orange;
+    background: var(--clr-primary);
     border-radius: 25px;
     box-shadow: 0.5px 0.5px 1px #615c9a;
+    transition: filter 200ms ease;
+
+    &:hover,
+    &:focus {
+      filter: brightness(1.1);
+    }
   }
 `;
 

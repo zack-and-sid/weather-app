@@ -6,7 +6,7 @@ import Toggle from './Toggle';
 import { ReactComponent as Logo } from '../assets/weathr.svg';
 
 const StyledHeader = styled.header`
-  background-color: orange;
+  background-color: var(--clr-primary);
   padding: 2rem 0;
 
   h1 {

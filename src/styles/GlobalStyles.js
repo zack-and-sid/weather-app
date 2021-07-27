@@ -5,6 +5,8 @@ import keyframesCSS from './keyframes';
 
 export default createGlobalStyle`  
   :root {
+    --clr-primary: orange;
+
     --height-forecast: 22vh;
   }
 
