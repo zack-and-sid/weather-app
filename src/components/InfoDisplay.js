@@ -1,10 +1,10 @@
-import styled from 'styled-components';
-import { getTemp, formatTemp } from '../utils';
-import { ReactComponent as Sunrise } from '../assets/sunrise.svg';
-import { ReactComponent as Sunset } from '../assets/sunset.svg';
-import MoonBar from './MoonBar';
+import styled from "styled-components";
+import { getTemp, formatTemp } from "../utils";
+import { ReactComponent as Sunrise } from "../assets/sunrise.svg";
+import { ReactComponent as Sunset } from "../assets/sunset.svg";
+import MoonBar from "./MoonBar";
 
-const StyledInfoDisplay = styled('div')`
+const StyledInfoDisplay = styled("div")`
   font-size: 1.6rem;
   padding-bottom: var(--height-forecast);
   width: 50vw;
@@ -40,7 +40,7 @@ const StyledInfoDisplay = styled('div')`
     justify-content: center;
     .icon-container {
       height: max(60px, 20vh);
-      animation: fade-in-up 0.5s ease-in-out forwards;
+      animation: fade-in-up 1.3s ease-in-out forwards;
       filter: drop-shadow(1px 1px 3px rgba(0, 0, 0, 0.3));
     }
 

@@ -1,13 +1,14 @@
-import { useRef } from 'react';
-import { getLocation } from '../api';
-import styled from 'styled-components';
-import { FaSearch } from 'react-icons/fa';
-import Toggle from './Toggle';
-import { ReactComponent as Logo } from '../assets/weathr.svg';
+import { useRef } from "react";
+import { getLocation } from "../api";
+import styled from "styled-components";
+import { FaSearch } from "react-icons/fa";
+import Toggle from "./Toggle";
+import { ReactComponent as Logo } from "../assets/weathr.svg";
 
 const StyledHeader = styled.header`
   background-color: var(--clr-primary);
   padding: 2rem 0;
+  height: var(--height-header);
 
   h1 {
     padding: 1rem 0;
@@ -58,8 +59,13 @@ const StyledHeader = styled.header`
 `;
 
 const Header = (props) => {
-  const { updateWeather, updateMapUrl, updateAddress, toggleTemp, isMetric } =
-    props;
+  const {
+    updateWeather,
+    updateMapUrl,
+    updateAddress,
+    toggleTemp,
+    isMetric,
+  } = props;
   const inputRef = useRef();
 
   // for unit checkbox

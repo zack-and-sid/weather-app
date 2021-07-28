@@ -1,4 +1,4 @@
-import { css } from 'styled-components';
+import { css } from "styled-components";
 
 export default css`
   @keyframes fade-in {
@@ -37,26 +37,26 @@ export default css`
 
   @keyframes moon-dance {
     0% {
-      transform: scale(1.6) rotate(0deg);
+      transform: scale(1.6) translateX(200%) rotate(0deg);
     }
-    10% {
-      transform: scale(1.6) rotate(360deg);
-    }
+    /* 12% {
+      transform: scale(1.6) translateX(200%) rotate(180deg);
+    } */
 
     25% {
-      transform: scale(1.54) rotate(355deg);
+      transform: scale(1.54) translateX(0%) rotate(360deg);
     }
 
     50% {
-      transform: scale(1.6) rotate(360deg);
+      transform: scale(1.6) translateX(0%) rotate(360deg);
     }
 
     75% {
-      transform: scale(1.54) rotate(355deg);
+      transform: scale(1.54) translateX(0%) rotate(355deg);
     }
 
     100% {
-      transform: scale(1.6) rotate(360deg);
+      transform: scale(1.6) translateX(0%) rotate(360deg);
     }
   }
 `;

@@ -61,7 +61,7 @@ export default function useWeather() {
       return { description: "Full Moon", fileName: "full-moon.png" };
     } else if (ogValue === 0.75) {
       return {
-        description: "Last Quarter Moon",
+        description: "Third Quarter Moon",
         fileName: "third-quarter.png",
       };
     }

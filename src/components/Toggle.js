@@ -47,7 +47,7 @@ const StyledToggle = styled.div`
     font-size: 1.8rem;
     position: relative;
     top: 8px;
-    color: rgba(97, 92, 154);
+    color: var(--clr-secondary);
   }
 
   .celcius {

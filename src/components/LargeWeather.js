@@ -1,12 +1,12 @@
-import InfoDisplay from './InfoDisplay';
-import styled from 'styled-components';
+import InfoDisplay from "./InfoDisplay";
+import styled from "styled-components";
 
 const StyledLargeWeather = styled.article`
   /* min-height: 35rem; */
   /* height: 50vh; */
   font-size: 1.3rem;
   padding: 2rem 0;
-  height: 100%;
+  height: calc(100% - var(--height-forecast));
 
   .wrapper-large-weather {
     position: relative;
@@ -20,7 +20,7 @@ const StyledLargeWeather = styled.article`
     position: absolute;
     top: 0;
     left: -30%;
-    content: '';
+    content: "";
     display: block;
     width: 100%;
     height: 100%;
@@ -30,13 +30,13 @@ const StyledLargeWeather = styled.article`
         rgba(255, 255, 255, 0.65) 50%,
         rgba(255, 255, 255, 0.95) 98%
       ),
-      url('${({ $mapUrl }) => $mapUrl}');
+      url("${({ $mapUrl }) => $mapUrl}");
     background-repeat: no-repeat;
     background-size: cover;
     z-index: -1;
     opacity: 0;
     ${({ $mapUrl }) => {
-      return $mapUrl ? 'animation: fade-in 4s ease forwards;' : null;
+      return $mapUrl ? "animation: fade-in 4s ease forwards;" : null;
     }}
   }
 

@@ -1,8 +1,8 @@
-import { css } from 'styled-components';
+import { css } from "styled-components";
 
 const typographyCSS = css`
   :root {
-    --fz-xl: max(5rem, 11vh);
+    --fz-xl: max(5rem, 10vh);
     --fz-lg: max(20px, 2vw);
     --fz-md: max(16px, 2vh);
     --fz-sm: max(15px, 1.2vw);

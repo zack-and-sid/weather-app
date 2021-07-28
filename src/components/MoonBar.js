@@ -1,8 +1,9 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
-const StyledMoonBar = styled('div')`
+const StyledMoonBar = styled("div")`
   width: 100%;
   min-width: 200px;
+  max-height: 65px;
   display: flex;
   justify-content: flex-start;
   align-items: center;
@@ -22,9 +23,10 @@ const StyledMoonBar = styled('div')`
     top: 0px;
     left: 3px;
     height: 40px;
+    transform-origin: center;
     transform: scale(1.6);
     filter: drop-shadow(1px 1px 3px rgba(255, 255, 255, 0.2));
-    animation: moon-dance 5s ease-in-out forwards;
+    animation: moon-dance 4s cubic-bezier(0.3, 0.69, 0.49, 0.99) forwards;
   }
 
   span {
@@ -32,6 +34,8 @@ const StyledMoonBar = styled('div')`
     width: 12ch;
     line-height: 1.2;
     margin-left: 1em;
+    animation: fade-in 1s ease-in-out forwards 500ms;
+    opacity: 0;
   }
 
   animation: slide-left 500ms ease forwards;
@@ -44,7 +48,7 @@ const MoonBar = ({ moonPhase }) => {
         src={require(`../assets/moons/${moonPhase.fileName}`).default}
         alt={moonPhase.description}
       />
-      <span className="">{moonPhase.description}</span>
+      <span>{moonPhase.description}</span>
     </StyledMoonBar>
   );
 };

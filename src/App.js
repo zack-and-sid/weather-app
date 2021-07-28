@@ -1,18 +1,18 @@
-import { useState } from 'react';
-import useWeather from './hooks/useWeather';
-import useWeatherMap from './hooks/useWeatherMap';
-import Header from './components/Header';
-import useAddress from './hooks/useAddress';
-import Weather from './components/Weather';
-import styled from 'styled-components';
-import Footer from './components/Footer';
-import StartScreen from './components/StartScreen';
+import { useState } from "react";
+import useWeather from "./hooks/useWeather";
+import useWeatherMap from "./hooks/useWeatherMap";
+import Header from "./components/Header";
+import useAddress from "./hooks/useAddress";
+import Weather from "./components/Weather";
+import styled from "styled-components";
+import Footer from "./components/Footer";
+import StartScreen from "./components/StartScreen";
 
 const StyledApp = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  height: 100vh;
+  height: 100%;
   overflow: hidden;
 `;
 function App() {

@@ -1,13 +1,13 @@
-import { useState } from 'react';
-import styled from 'styled-components';
-import LargeWeather from './LargeWeather';
-import WeeklyForecast from './WeeklyForecast';
+import { useState } from "react";
+import styled from "styled-components";
+import LargeWeather from "./LargeWeather";
+import WeeklyForecast from "./WeeklyForecast";
 
 const StyledWeather = styled.main`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  height: 80vh;
+  height: calc(100% - var(--height-header));
 `;
 
 const Weather = ({ weatherDays, isMetric, mapUrl, loading, address }) => {

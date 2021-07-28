@@ -1,13 +1,15 @@
-import { createGlobalStyle } from 'styled-components';
-import setupCSS from './setup';
-import typographyCSS from './typography';
-import keyframesCSS from './keyframes';
+import { createGlobalStyle } from "styled-components";
+import setupCSS from "./setup";
+import typographyCSS from "./typography";
+import keyframesCSS from "./keyframes";
 
 export default createGlobalStyle`  
   :root {
     --clr-primary: orange;
-
+    --clr-secondary: #635e9b;
     --height-forecast: 22vh;
+    --height-footer: 3em;
+    --height-header: 145px;
   }
 
   ${setupCSS}
@@ -16,6 +18,7 @@ export default createGlobalStyle`
   
   html {
     font-size: 62.5%;
+    height: -webkit-fill-available;
   }
 
   body {
@@ -23,6 +26,8 @@ export default createGlobalStyle`
     margin: 0;
     font-size: var(--fz-md);
     font-family: 'Roboto', sans-serif;
+    height: 100vh;
+    height: -webkit-fill-available
   } 
 
   button {
