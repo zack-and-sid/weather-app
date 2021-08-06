@@ -29,7 +29,7 @@ const StyledToggle = styled.div`
   .toggle::after {
     content: "";
     position: absolute;
-    bottom: -7.5px;
+    bottom: -8px;
     right: 12px;
     width: 20px;
     height: 20px;
