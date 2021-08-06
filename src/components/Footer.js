@@ -2,11 +2,12 @@ import styled from "styled-components";
 
 const StyledFooter = styled("footer")`
   width: 100%;
+  /* height: var(--height-footer); */
   padding: 0.5em;
+  background: var(--clr-forecast);
   font-size: var(--fz-xs);
   text-align: center;
   color: rgba(0, 0, 0, 0.7);
-  height: var(--height-footer);
 
   @media (min-height: 570px) {
     padding: 1em;

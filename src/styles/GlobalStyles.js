@@ -7,6 +7,7 @@ export default createGlobalStyle`
   :root {
     --clr-primary: orange;
     --clr-secondary: #635e9b;
+    --clr-forecast:rgba(232, 232, 232, 0.5);
     --height-forecast: 22vh;
     --height-footer: 3em;
     --height-header: 145px;

@@ -7,7 +7,7 @@ const StyledWeeklyForecast = styled("div")`
   left: 0; */
   width: 100%;
   /* height: var(--height-forecast); */
-  background: rgba(232, 232, 232, 0.5);
+  background: var(--clr-forecast);
   /* padding-bottom: 5rem; */
   .wrapper-weekly-forecast {
     display: flex;
