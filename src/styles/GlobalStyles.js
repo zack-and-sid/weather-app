@@ -27,7 +27,8 @@ export default createGlobalStyle`
     font-size: var(--fz-md);
     font-family: 'Roboto', sans-serif;
     height: 100vh;
-    height: -webkit-fill-available
+    height: -webkit-fill-available;
+    height: fill-available;
   } 
 
   button {

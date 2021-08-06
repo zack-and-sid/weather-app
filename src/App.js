@@ -1,12 +1,12 @@
-import { useState } from 'react';
-import useWeather from './hooks/useWeather';
-import useWeatherMap from './hooks/useWeatherMap';
-import Header from './components/Header';
-import useAddress from './hooks/useAddress';
-import Weather from './components/Weather';
-import styled from 'styled-components';
-import Footer from './components/Footer';
-import StartScreen from './components/StartScreen';
+import { useState } from "react";
+import useWeather from "./hooks/useWeather";
+import useWeatherMap from "./hooks/useWeatherMap";
+import Header from "./components/Header";
+import useAddress from "./hooks/useAddress";
+import Weather from "./components/Weather";
+import styled from "styled-components";
+import Footer from "./components/Footer";
+import StartScreen from "./components/StartScreen";
 
 const StyledApp = styled.div`
   position: absolute;
@@ -17,7 +17,10 @@ const StyledApp = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  overflow: hidden;
+  /* On extremely small device, this will allow forecast to overflow causing vertical scroll,
+    which is more desirable than hiding it.
+  */
+  /* overflow: hidden; */
 `;
 function App() {
   // Keeping weather and weatherMap in the state because they're connected to the element on the page
