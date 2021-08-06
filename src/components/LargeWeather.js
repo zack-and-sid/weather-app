@@ -6,7 +6,6 @@ const StyledLargeWeather = styled.article`
   /* height: 50vh; */
   font-size: 1.3rem;
   padding: 2rem 0;
-  height: calc(100% - var(--height-forecast));
 
   .wrapper-large-weather {
     position: relative;

@@ -7,7 +7,7 @@ const StyledWeather = styled.main`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  height: calc(100% - var(--height-header));
+  /* height: calc(100% - var(--height-header)); */
 `;
 
 const Weather = ({ weatherDays, isMetric, mapUrl, loading, address }) => {
