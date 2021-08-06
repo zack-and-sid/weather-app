@@ -1,18 +1,22 @@
-import { useState } from "react";
-import useWeather from "./hooks/useWeather";
-import useWeatherMap from "./hooks/useWeatherMap";
-import Header from "./components/Header";
-import useAddress from "./hooks/useAddress";
-import Weather from "./components/Weather";
-import styled from "styled-components";
-import Footer from "./components/Footer";
-import StartScreen from "./components/StartScreen";
+import { useState } from 'react';
+import useWeather from './hooks/useWeather';
+import useWeatherMap from './hooks/useWeatherMap';
+import Header from './components/Header';
+import useAddress from './hooks/useAddress';
+import Weather from './components/Weather';
+import styled from 'styled-components';
+import Footer from './components/Footer';
+import StartScreen from './components/StartScreen';
 
 const StyledApp = styled.div`
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  height: 100%;
   overflow: hidden;
 `;
 function App() {
