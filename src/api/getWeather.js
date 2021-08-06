@@ -6,7 +6,6 @@ export default async function getWeather(coordinates, units) {
 
   const openWeatherAPI = process.env.REACT_APP_OPEN_WEATHER_API;
   const url = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lng}&exclude=minutely&appid=${openWeatherAPI}&units=metric`;
-  console.log(url);
   try {
     const response = await fetch(url);
     const { current, daily, hourly } = await response.json();
@@ -50,7 +49,6 @@ export default async function getWeather(coordinates, units) {
         };
       }),
     };
-    console.log(weather);
     return weather;
   } catch (err) {
     console.log(err);

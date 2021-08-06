@@ -22,6 +22,23 @@ const StyledApp = styled.div`
   */
   /* overflow: hidden; */
 `;
+
+const messages = [
+  "Did you see the moon last night?",
+  "Life can be so sweet...",
+  "Every cloud has a silver lining",
+  "Mares’ tails and mackerel scales make tall ships take in their sails",
+  "When dew is on the grass, rain will never come to pass",
+  "Red sky at night, sailor’s delight",
+];
+
+const getRandomMessage = (array) => {
+  const randomIndex = Math.floor(Math.random() * array.length);
+  return '"' + array[randomIndex] + '"';
+};
+
+const message = getRandomMessage(messages);
+
 function App() {
   // Keeping weather and weatherMap in the state because they're connected to the element on the page
   const { isWeatherLoading, updateWeather, weatherDays } = useWeather();
@@ -53,7 +70,7 @@ function App() {
           address={currentAddress}
         />
       ) : (
-        <StartScreen />
+        <StartScreen message={message} />
       )}
       <Footer />
     </StyledApp>

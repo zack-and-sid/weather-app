@@ -72,7 +72,6 @@ const StyledLargeWeather = styled.article`
 
 export default function LargeWeather(props) {
   const {
-    loading,
     isMetric,
     mapUrl,
     displayWeather,

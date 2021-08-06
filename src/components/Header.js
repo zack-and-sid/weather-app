@@ -46,8 +46,6 @@ const StyledHeader = styled.header`
       transform: scale(1.3);
       fill: lightgrey;
       transition: all 200ms ease;
-      /* position: relative; */
-      /* top: 1px; */
     }
     &:hover,
     &:focus {
@@ -76,7 +74,6 @@ const Header = (props) => {
     // not keeping coordinates in state because it's not directly connected to what gets rendered on the page
     const { coordinates, formattedAddress } = await getLocation(address);
 
-    console.log(formattedAddress);
     updateAddress(formattedAddress);
     updateWeather(coordinates);
     updateMapUrl(coordinates);

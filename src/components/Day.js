@@ -56,7 +56,6 @@ const Day = (props) => {
   const convertedMax = getTemp(isMetric, max);
 
   useEffect(() => {
-    console.log({ active });
     setIsActive(active);
   }, [active]);
 

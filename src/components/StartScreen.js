@@ -25,27 +25,12 @@ const StyledStartScreen = styled("div")`
   }
 `;
 
-const messages = [
-  "Did you see the moon last night?",
-  "Life can be so sweet...",
-  "Every cloud has a silver lining",
-  "Mares’ tails and mackerel scales make tall ships take in their sails",
-  "When dew is on the grass, rain will never come to pass",
-  "Red sky at night, sailor’s delight",
-];
-
-const getRandomMessage = (array) => {
-  const randomIndex = Math.floor(Math.random() * array.length);
-  console.log(randomIndex);
-  return '"' + array[randomIndex] + '"';
-};
-
-const StartScreen = () => {
+const StartScreen = ({ message }) => {
   return (
     <StyledStartScreen>
-      <div class="wrapper">
+      <div className="wrapper">
         <div className="copy">
-          <p>{getRandomMessage(messages)}</p>
+          <p>{message}</p>
         </div>
       </div>
       <Seasons />
