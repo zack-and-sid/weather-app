@@ -21,7 +21,7 @@ const StyledToggle = styled.div`
     bottom: -10px;
     right: 10px;
     width: 50px;
-    height: 26px;
+    height: 27px;
     background-color: rgba(255, 255, 255, 0.6);
     border-radius: 20px;
   }
@@ -29,8 +29,8 @@ const StyledToggle = styled.div`
   .toggle::after {
     content: "";
     position: absolute;
-    bottom: -7.5px;
-    right: 12px;
+    bottom: -7px;
+    right: 13px;
     width: 20px;
     height: 20px;
     background-color: white;
@@ -46,7 +46,7 @@ const StyledToggle = styled.div`
   .unit {
     font-size: 1.8rem;
     position: relative;
-    top: 8px;
+    top: 7px;
     color: var(--clr-secondary);
   }
 
