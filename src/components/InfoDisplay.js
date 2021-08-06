@@ -6,7 +6,8 @@ import MoonBar from "./MoonBar";
 
 const StyledInfoDisplay = styled("div")`
   font-size: 1.6rem;
-  padding-bottom: var(--height-forecast);
+  /* removed forecast's fixed height  */
+  /* padding-bottom: var(--height-forecast); */
   width: 50vw;
   height: 100%;
   max-width: 250px;
@@ -61,7 +62,7 @@ const StyledInfoDisplay = styled("div")`
       align-items: center;
       flex-direction: column;
       width: min(max(40px, 5vw), 100%);
-      margin: 1rem;
+      margin: 2rem;
     }
   }
 `;
@@ -100,11 +101,11 @@ const InfoDisplay = (props) => {
       </div>
       <div className="flex sun-container">
         <div className="sun-item">
-          <Sunrise className="icon" width="100%" height="50%" />
+          <Sunrise className="icon" width="100%" />
           <span>{sunrise}</span>
         </div>
         <div className="sun-item">
-          <Sunset className="icon" width="100%" height="50%" />
+          <Sunset className="icon" width="100%" />
           <span>{sunset}</span>
         </div>
       </div>

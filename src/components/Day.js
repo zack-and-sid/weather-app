@@ -1,11 +1,11 @@
-import { useEffect, useState } from 'react';
-import styled from 'styled-components';
-import { getTemp } from '../utils';
+import { useEffect, useState } from "react";
+import styled from "styled-components";
+import { getTemp } from "../utils";
 
 const StyledDay = styled.button`
   display: block;
   width: calc(100% / 6);
-  padding: 2rem 1rem 5rem;
+  padding: 2rem 1rem;
   font-size: var(--fz-sm);
   /* border: 2px solid red; */
   &.active,
@@ -51,7 +51,7 @@ const Day = (props) => {
 
   const [isActive, setIsActive] = useState(active);
 
-  const day = date.split(',')[0];
+  const day = date.split(",")[0];
   const convertedMin = getTemp(isMetric, min);
   const convertedMax = getTemp(isMetric, max);
 
@@ -65,7 +65,7 @@ const Day = (props) => {
   };
 
   return (
-    <StyledDay className={isActive ? 'active' : ''} onClick={handleDayClick}>
+    <StyledDay className={isActive ? "active" : ""} onClick={handleDayClick}>
       <span className="icon-container icon-small">
         <img
           src={`http://openweathermap.org/img/wn/${icon}@2x.png`}

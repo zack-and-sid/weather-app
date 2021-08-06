@@ -9,11 +9,18 @@ import Footer from "./components/Footer";
 import StartScreen from "./components/StartScreen";
 
 const StyledApp = styled.div`
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  height: 100%;
-  overflow: hidden;
+  /* On extremely small device, this will allow forecast to overflow causing vertical scroll,
+    which is more desirable than hiding it.
+  */
+  /* overflow: hidden; */
 `;
 function App() {
   // Keeping weather and weatherMap in the state because they're connected to the element on the page

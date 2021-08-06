@@ -2,11 +2,10 @@ import InfoDisplay from "./InfoDisplay";
 import styled from "styled-components";
 
 const StyledLargeWeather = styled.article`
-  /* min-height: 35rem; */
-  /* height: 50vh; */
+  /*  Take up all available height*/
+  flex-grow: 1;
   font-size: 1.3rem;
   padding: 2rem 0;
-  height: calc(100% - var(--height-forecast));
 
   .wrapper-large-weather {
     position: relative;

@@ -3,11 +3,14 @@ import { ReactComponent as Seasons } from "../assets/seasons.svg";
 
 const StyledStartScreen = styled("div")`
   padding: 2rem;
-  height: calc(100% - var(--height-header));
   display: flex;
   flex-direction: column;
   justify-content: center;
   padding-bottom: var(--height-footer);
+
+  /* This will prevent Seasons from growing too big and pushing StartScreen it downward causing overflow */
+  /* This also ensures that children is contained within the flex item(StartScreen)  */
+  overflow: hidden;
 
   .copy {
     margin: 1em auto 2em;
@@ -16,8 +19,9 @@ const StyledStartScreen = styled("div")`
     opacity: 0.8;
   }
   svg {
+    /* Fill in all available space */
     width: 100%;
-    height: 60%;
+    height: 100%;
   }
 `;
 

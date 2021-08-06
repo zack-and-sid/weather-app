@@ -4,10 +4,14 @@ import LargeWeather from "./LargeWeather";
 import WeeklyForecast from "./WeeklyForecast";
 
 const StyledWeather = styled.main`
+  /* 
+  take up all available space from the container. 
+  The default behavior is to take content's height
+  */
+  flex-grow: 1;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  height: calc(100% - var(--height-header));
 `;
 
 const Weather = ({ weatherDays, isMetric, mapUrl, loading, address }) => {
