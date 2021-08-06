@@ -17,7 +17,7 @@ export default async function getLocation(address) {
 
   const mapApiKey = process.env.REACT_APP_MAPQUEST_API;
   const response = await fetch(
-    `http://www.mapquestapi.com/geocoding/v1/address?key=${mapApiKey}&location=${address}`
+    `https://www.mapquestapi.com/geocoding/v1/address?key=${mapApiKey}&location=${address}`
   );
 
   const coordinateData = await response.json();

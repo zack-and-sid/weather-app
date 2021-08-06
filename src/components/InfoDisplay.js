@@ -28,7 +28,7 @@ const StyledInfoDisplay = styled("div")`
 
     .feels-like {
       position: absolute;
-      width: 100%;
+      width: max-content;
       bottom: -1em;
       left: 3ch;
       font-size: var(--fz-sm);
